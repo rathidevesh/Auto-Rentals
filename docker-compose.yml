@@ -1,0 +1,37 @@
+services:
+  frontend:
+    container_name: cca_pbl_frontend
+    image: react-1.0.0
+    restart: always
+    env_file:
+      - frontend/.env
+    build: 
+      context: frontend
+      dockerfile: Dockerfile
+    expose:
+      - 3000
+    ports:
+      - "3000:3000"
+    networks:
+      - shared-network
+    depends_on:
+      - backend
+
+  backend:
+    container_name: cca_pbl_backend
+    image: node-1.0.0
+    restart: always
+    env_file:
+      - backend/.env
+    build: 
+      context: backend
+      dockerfile: Dockerfile
+    expose:
+      - 5000
+    ports:
+      - "5000:5000"
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
