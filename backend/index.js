@@ -19,5 +19,5 @@ app.use('/api/rent',require('./routes/rent'))
 app.use('/api/Bookingsroute',require('./routes/Bookingsroute'))
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`App listening on port ${port}`)
 })
