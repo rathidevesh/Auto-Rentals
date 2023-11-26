@@ -2,7 +2,8 @@ import NoteContext from "./noteContext";
 import { useState , useEffect } from "react";
 
 const NoteState = (props) => {
-  
+  const api_call = process.env.REACT_APP_URL;
+  console.log(api_call);
   const notesInitial = []
   const [notes, setNotes] = useState(notesInitial)
   const bookinInitial = []
@@ -10,7 +11,7 @@ const NoteState = (props) => {
   // Get all Notes
   const getNotes = async () => {
     // API Call 
-    const response = await fetch(`http://localhost:5000/api/rent/fetchallcars`, {
+    const response = await fetch(`${api_call}/api/rent/fetchallcars`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -24,7 +25,7 @@ const NoteState = (props) => {
 
   // Add a Note
   const addNote = async (name, description, cost , photo ) => {
-    const response = await fetch(`http://localhost:5000/api/rent/addcar`, {
+    const response = await fetch(`${api_call}/api/rent/addcar`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -42,7 +43,7 @@ const NoteState = (props) => {
   // Delete a Note
   const deleteNote=async(id)=>{
     // //API CALLS - backend
-        const response = await fetch(`http://localhost:5000/api/rent/deletecar/${id}`, {
+        const response = await fetch(`${api_call}/api/rent/deletecar/${id}`, {
             method: "DELETE", 
             headers: {
             "Content-Type": "application/json",
@@ -60,11 +61,11 @@ const NoteState = (props) => {
         console.log(newNotes)
         setNotes(newNotes)
         console.log(notes)
-   }
+      }
   // Edit a Note
   const editNote = async (id, name, description, cost, photo) => {
     // API Call 
-    const response = await fetch(`http://localhost:5000/api/rent/updatecar/${id}`, {
+    const response = await fetch(`${api_call}/api/rent/updatecar/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -97,7 +98,7 @@ const NoteState = (props) => {
   const getallbookings = async () => {
     const token = localStorage.getItem('token');
   
-    const response = await fetch('http://localhost:5000/api/Bookingsroute/bookings', {
+    const response = await fetch(`${api_call}/api/Bookingsroute/bookings`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -115,7 +116,7 @@ const NoteState = (props) => {
   
 
   const getbookings = async(bookeduser,car_id,mobileNumber,startDate,  endDate , carname ,carcost,carphoto) => {
-    const response = await fetch ('http://localhost:5000/api/Bookingsroute/bookcar', {
+    const response = await fetch (`${api_call}/api/Bookingsroute/bookcar`, {
         method : 'POST',
         headers : {
           'Content-Type': 'application/json',

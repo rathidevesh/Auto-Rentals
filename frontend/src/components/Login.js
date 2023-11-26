@@ -6,7 +6,6 @@ export default function Login(props) {
     const [credentials ,setCredentials]= useState({email:"",password:""})
     let history = useNavigate(); 
     const api_call = process.env.REACT_APP_URL;
-    console.log(api_call);
 
     const handleSubmit= async(e)=>{
         e.preventDefault();
