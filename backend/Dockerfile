@@ -1,6 +1,6 @@
 FROM node:current-alpine
 WORKDIR /usr/app/backend
-COPY package*.json .
+COPY package*.json ./
 RUN npm install
 COPY . .
 ENV PORT = 5000
